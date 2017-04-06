@@ -6,9 +6,9 @@
  -->
 <html>
   <head>
-    <title>Getting Started Extension's Popup</title>
+    <title>Edgar Ronda</title>
     <link rel="stylesheet" href="style.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!--
       - JavaScript and HTML must be in separate files: see our Content Security
       - Policy documentation[1] for details and explanation.
@@ -19,8 +19,17 @@
   </head>
 
   <body>
-    <div id="status"></div>
-    <img id="image-result" hidden>
+    <div id="wrap">
+      <div id="title">
+        <img id="image-result" hidden>
+      </div>      
+      <div id="tokendata">
+        <p>Active Token: </p>
+        <p id ="token" class="data"></p>
+        <p>Token Expiration:</p>
+        <p id ="expiration" class="data"></p>    
+      </div>
+    </div>
   </body>
 </html>
 

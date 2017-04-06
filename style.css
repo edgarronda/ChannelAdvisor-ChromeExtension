@@ -3,11 +3,18 @@ body {
         font-size: 100%;
       }
 
-#status {
-        /* avoid an excessively wide status text */
-        white-space: pre;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width: 350px;
-        max-width: 600px;
-      }
+#wrap{
+	 width: 450px;
+	 max-width: 550px;
+     overflow: hidden;
+}
+#title { 
+	text-align: center;	
+}
+#tokendata{
+	text-overflow:
+	font-weight: 900; 
+}
+.data{
+	text-align: center;
+}

@@ -1,21 +1,31 @@
 {
   "manifest_version": 2,
 
-   "author": "Edgar Ronda",
-
-  "name": "MI Tech - Sample",
-  "description": "This ext is only sample for MI Tech by Edgar Ronda.",
+  "name": "MI Tech - Channel Advisor Token",
+  "description": "Retrieve Channel Advisor Token history by Edgar Ronda.",
   "version": "1.0",
 
+  "author": "Edgar Ronda",
+
   "browser_action": {
-    "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+
+  "icons": { "16": "icon16x16.png",
+           "48": "icon48x48.png",
+          "128": "icon128x128.png" 
+        },
+
   "permissions": [
     "tabs",
     "https://ajax.googleapis.com/",
     "http://apps3.mitechnologiesinc.com/",
-    "unlimitedStorage"
-  ],
+    "http://192.168.0.65:8089/api/v1/activetoken/",
+    "unlimitedStorage",
+    "notifications"
+    ],
+
    "homepage_url": "http://apps3.mitechnologiesinc.com/"
 }
