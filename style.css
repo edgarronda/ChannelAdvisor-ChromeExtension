@@ -4,7 +4,7 @@ body {
       }
 
 #wrap{
-	 width: 450px;
+	 width: 400px;
 	 max-width: 550px;
      overflow: hidden;
 }
@@ -17,4 +17,6 @@ body {
 }
 .data{
 	text-align: center;
+	background-color: #3B8686;
+	color: #FFF;
 }
