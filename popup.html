@@ -9,15 +9,9 @@
     <title>Edgar Ronda</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
     <script src="popup.js"></script>
+    <script src="moment.min.js"></script>
   </head>
-
   <body>
     <div id="wrap">
       <div id="title">
@@ -30,6 +24,10 @@
         <p id ="expiration" class="data"></p>  
         <p>Previous Token:</p>
         <p id ="previous" class="data"></p>   
+      </div>
+      <div class="refreshtoken">
+        <button type="button">Refresh Now!</button>
+        <p id ="test"></p>        
       </div>
     </div>
   </body>
