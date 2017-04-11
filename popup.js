@@ -1,10 +1,13 @@
 
+
 function renderData(dataText) {
   document.getElementById('token').textContent = dataText;
 }
+
 function renderExpiration(expirationText) {
   document.getElementById('expiration').textContent = expirationText;
 }
+
 function renderPreviousToken(previousText){
   document.getElementById('previous').textContent = previousText;
 }
@@ -33,12 +36,18 @@ function ReadPreviousToken(){
         });
 }
 
+function CalculateTokenExpiration(){
+  var NowMoment = moment();
+  document.getElementById('test').textContent = NowMoment;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     var imageResult = document.getElementById('image-result');
-    imageResult.src = 'mit_logo.jpg';
+    imageResult.src = 'assets/mit_logo.jpg';
     imageResult.hidden = false;
     ReadActiveToken();
     ReadExpirationDate();
-    ReadPreviousToken();   
+    ReadPreviousToken();
+    CalculateTokenExpiration();    
 }); 
