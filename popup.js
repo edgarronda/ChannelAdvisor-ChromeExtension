@@ -1,39 +1,14 @@
 
-
-function renderData(dataText) {
-  document.getElementById('token').textContent = dataText;
+function renderData(element,dataText) {
+  document.getElementById(element).textContent = dataText;
 }
 
-function renderExpiration(expirationText) {
-  document.getElementById('expiration').textContent = expirationText;
-}
-
-function renderPreviousToken(previousText){
-  document.getElementById('previous').textContent = previousText;
-}
-
-function ReadActiveToken(){
-   $.ajax({
-          url: "http://192.168.0.65:8089/api/v1/activetoken/"
+function AjaxCall(element, url){
+  $.ajax({
+          url: url
       }).then(function(data) {
-         renderData(data);
-      });
-}
-
-function ReadExpirationDate(){
-   $.ajax({
-          url: "http://192.168.0.65:8089/api/v1/tokenexpiration/"
-      }).then(function(data) {
-         renderExpiration(data);
-      });
-}
-
-function ReadPreviousToken(){
-    $.ajax({
-            url: "http://192.168.0.65:8089/api/v1/previoustoken/"
-        }).then(function(data) {
-           renderPreviousToken(data);
-        });
+         renderData(element, data);
+  });
 }
 
 function CalculateTokenExpiration(){
@@ -41,13 +16,18 @@ function CalculateTokenExpiration(){
   document.getElementById('test').textContent = NowMoment;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function refreshtoken(e) {
+      $.ajax({
+          url: "http://192.168.0.65:8089/api/v1/token/getnewtoken/"
+      });
+}
 
-    var imageResult = document.getElementById('image-result');
-    imageResult.src = 'assets/mit_logo.jpg';
-    imageResult.hidden = false;
-    ReadActiveToken();
-    ReadExpirationDate();
-    ReadPreviousToken();
-    CalculateTokenExpiration();    
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('refreshtoken').addEventListener('click', refreshtoken);      
+  document.getElementById('image-result').src = 'assets/mit_logo.jpg';
+    
+  AjaxCall('token',"http://192.168.0.65:8089/api/v1/token/activetoken/");
+  AjaxCall('expiration',"http://192.168.0.65:8089/api/v1/token/tokenexpiration/");
+  AjaxCall('previous',"http://192.168.0.65:8089/api/v1/token/previoustoken/");
+  CalculateTokenExpiration();
 }); 

@@ -11,7 +11,7 @@
 //Check API in order to verify if token has been expired.
 function CheckToken(){
   $.ajax({
-            url: "http://192.168.0.65:8089/api/v1/verifytokenexpiration/"
+            url: "http://192.168.0.65:8089/api/v1/token/verifytokenexpiration/"
         }).then(function(data) {
            if (data == 1){
               var message = "Token has been expired!";
@@ -21,14 +21,12 @@ function CheckToken(){
 }
 
 //Send notification.
-function show(message) {
-  var time = /(..)(:..)/.exec(new Date());     // The prettyprinted time.
-  var hour = time[1] % 12 || 12;               // The prettyprinted hour.
-  var period = time[1] < 12 ? 'a.m.' : 'p.m.'; // The period of the day.
-  new Notification(hour + time[2] + ' ' + period, {
-    icon: '/assets/icon48x48.png',
-    body: message
-  });
+function show(message) {  
+    var NowMoment = moment().format('LTS');
+    new Notification(NowMoment,{
+      icon: '/assets/icon128x128.png',
+      body: message
+    });
 }
 
 // Conditionally initialize the options.
