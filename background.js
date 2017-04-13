@@ -13,9 +13,12 @@ function CheckToken(){
   $.ajax({
             url: "http://192.168.0.65:8089/api/v1/token/verifytokenexpiration/"
         }).then(function(data) {
-           if (data == 1){
+           if (data == 1){             
+              document.getElementById('refreshtokenbutton').disabled=false;   
               var message = "Token has been expired!";
               show(message);
+           } else{
+              document.getElementById('refreshtokenbutton').disabled=true;   
            }
         });
 }
