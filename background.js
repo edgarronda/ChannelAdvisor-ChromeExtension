@@ -12,13 +12,12 @@
 //send notification.
 function IsTokenActive(){
   var NowMoment = moment().format("YYYY-MM-DD h:mm:ss A");
-  var TokenExpirationDate = moment(localStorage.tokenexpiration).format("YYYY-MM-DD h:mm:ss A");  
+  var TokenExpirationDate = moment(localStorage.expiration).format("YYYY-MM-DD h:mm:ss A");  
   var isbefore = moment(NowMoment).isBefore(TokenExpirationDate);  
 
   if(!isbefore){
     show( "Token has been expired!");
   }
-
 }
 
 //Send notification.
