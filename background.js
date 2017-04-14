@@ -8,16 +8,17 @@
   "Notification.requestPermission" beforehand).
 */
 
-//Check API in order to verify if token has been expired.
-function CheckToken(){
-  $.ajax({
-            url: "http://192.168.0.65:8089/api/v1/verifytokenexpiration/"
-        }).then(function(data) {
-           if (data == 1){
-              var message = "Token has been expired!";
-              show(message);
-           }
-        });
+//Check dates, if token expiration has been outdated
+//send notification.
+function IsTokenActive(){
+  var NowMoment = moment().format("YYYY-MM-DD h:mm:ss A");
+  var TokenExpirationDate = moment(localStorage.tokenexpiration).format("YYYY-MM-DD h:mm:ss A");  
+  var isbefore = moment(NowMoment).isBefore(TokenExpirationDate);  
+
+  if(!isbefore){
+    show( "Token has been expired!");
+  }
+
 }
 
 //Send notification.
@@ -39,7 +40,7 @@ if (!localStorage.isInitialized) {
 // Test for notification support.
 if (window.Notification) {
   // While activated, show notifications at the display frequency.
-  if (JSON.parse(localStorage.isActivated)) { CheckToken(); }
+  if (JSON.parse(localStorage.isActivated)) { IsTokenActive(); }
 
   var interval = 0; // The display interval, in minutes.
 
@@ -50,7 +51,7 @@ if (window.Notification) {
       JSON.parse(localStorage.isActivated) &&
         localStorage.frequency <= interval
     ) {
-      CheckToken();
+      IsTokenActive();
       interval = 0;
     }
   }, 60000);

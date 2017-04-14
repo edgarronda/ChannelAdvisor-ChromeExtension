@@ -20,3 +20,26 @@ body {
 	background-color: #1976d2;
 	color: #FFF;
 }
+.refreshtoken{
+	text-align: center;
+}
+#refreshtokenbutton:enabled{
+	background-color: #63a4ff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+#refreshtokenbutton:disabled{
+	background-color: #e3f2fd;
+	border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
