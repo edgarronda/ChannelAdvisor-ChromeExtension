@@ -1,6 +1,9 @@
 
 function renderData(element,dataText) {
   document.getElementById(element).textContent = dataText;
+  if(element =='expiration'){    
+    localStorage.tokenexpiration = dataText;
+  }
 }
 
 function AjaxCall(element, url){
@@ -11,18 +14,10 @@ function AjaxCall(element, url){
   });
 }
 
-function CalculateTokenExpiration(){
-  var NowMoment = moment();
-  document.getElementById('test').textContent = NowMoment;
-}
-
 function refreshtoken(e) {
   $.ajax({
     url: "http://192.168.0.65:8089/api/v1/token/getnewtoken/"
   });
-  AjaxCall('token',"http://192.168.0.65:8089/api/v1/token/activetoken/");
-  AjaxCall('expiration',"http://192.168.0.65:8089/api/v1/token/tokenexpiration/");
-  AjaxCall('previous',"http://192.168.0.65:8089/api/v1/token/previoustoken/");
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -32,5 +27,4 @@ document.addEventListener('DOMContentLoaded', function() {
   AjaxCall('token',"http://192.168.0.65:8089/api/v1/token/activetoken/");
   AjaxCall('expiration',"http://192.168.0.65:8089/api/v1/token/tokenexpiration/");
   AjaxCall('previous',"http://192.168.0.65:8089/api/v1/token/previoustoken/");
-  CalculateTokenExpiration();
 }); 
